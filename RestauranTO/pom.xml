@@ -91,7 +91,7 @@
             </systemProperty>
           </systemProperties>
           <webAppConfig>
-            <contextPath>/ResutauranTO</contextPath>
+            <contextPath>/RestauranTO</contextPath>
           </webAppConfig>
         </configuration>
         <executions>
