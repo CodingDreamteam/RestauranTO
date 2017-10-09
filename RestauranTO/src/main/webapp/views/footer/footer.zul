@@ -1,0 +1,11 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+    <div hflex="1" vflex="1" apply="" sclass="banner">
+        <hbox hflex="1" vflex="1" align="center">
+            <div width="400px">
+               <label id="labelterms" value="Terminos y Condiciones"/>
+               <label id="labelcontactus" value="Contactanos"/>
+            </div>
+        </hbox>
+    </div>
+</zk>

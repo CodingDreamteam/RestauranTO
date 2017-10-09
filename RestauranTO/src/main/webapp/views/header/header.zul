@@ -1,0 +1,12 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+    <div hflex="1" vflex="1" apply="" sclass="banner">
+        <hbox hflex="1" vflex="1" align="center">
+            <div width="400px">
+               <label value="RestauranTO"  /> 
+               <label id="labellogin" value="Login"/>
+               <label id="labelregister" value="Registrarse"/>
+            </div>
+        </hbox>
+    </div>
+</zk>
