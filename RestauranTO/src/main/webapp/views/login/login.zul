@@ -16,7 +16,7 @@
     
     <center id="mainContent" autoscroll="true" border="none">
       
-     <window id="windowLogin" apply="" title="Logeate con tu nombre de usuario y contraseña" border="normal" hflex="min">
+     <window id="windowLogin" apply="" title="Logeate con tu nombre de usuario y contraseña" border="normal" position="center" mode="overlapped" hflex="min">
         <vbox hflex="min" align="center">
             <grid sclass="gridLayoutNoBorder" hflex="min">
                 <columns>
@@ -35,8 +35,8 @@
                 </rows>
             </grid>
             <label id="labelMessage" sclass="warn" value="&#160;" />
-            <button id="buttonLogin" label="Login" />
-            <button id="buttonregister" label="Registrate"/>
+            <button id="buttonLogin" label="Login" style ="position:absolute;top:120px;left: 90px;"/>
+            <button id="buttonregister" label="Registrate" style ="position:absolute;top:120px;right:75px;"/>
             <label id="labelForgotPassword" value="Olvidaste tu contraseña" style="cursor:hand;cursor:pointer" />
         </vbox>
         <timer id="timerKeepAliveSession" repeats="true" delay="120000" />
