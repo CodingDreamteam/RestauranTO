@@ -58,7 +58,7 @@ public class RestaurantDAO {
     
     }
  
-    public static boolean AddRating( final CDatabaseConnection dbConnection, TblSugestions tblSugestions) {
+    public static boolean AddSugestion( final CDatabaseConnection dbConnection, TblSugestions tblSugestions) {
      
      boolean result = false;
      
