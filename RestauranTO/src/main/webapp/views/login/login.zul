@@ -1,7 +1,4 @@
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
-<?link rel="stylesheet" type="text/css" href="resources/styles/login.style.css"?>
-
-<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
 <?link rel="stylesheet" type="text/css" href="../../resources/styles/home.style.css"?>
 
 <zk>
