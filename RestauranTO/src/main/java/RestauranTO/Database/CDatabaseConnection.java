@@ -80,8 +80,7 @@ public class CDatabaseConnection extends SelectorComposer<Component> {
                     localDBConnection.close();
                     
                     localDBConnection = null;
-                    
-                    
+                                     
                 }
                 
             }
