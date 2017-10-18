@@ -1,0 +1,19 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+<window id="windowRegister" xmlns:w="client" apply="" title="Register" border="none" hflex="min" closable="true">
+    <vlayout width="100%">
+      <label value="Email" style="font-size:11pt;font-style:italic" />
+      <textbox id="textboxEmail" width="100px" />
+      <label value="Name :" style="font-size:11pt;font-style:italic" />
+      <textbox id="textboxName" width="100px" />
+      <label value="Password :" style="font-size:11pt;font-style:italic" />
+      <textbox id="textboxPassword" password="true" width="100px" />
+      <label value="Repeat Password :" style="font-size:11pt;font-style:italic" />
+      <textbox id="textboxRepeatPassword" password="true" width="100px" />
+      <label value="Picture :" width="100px" />
+      <button id="buttonPicture" label="Upload Picture"></button>
+    </vlayout>
+    <button id="buttonOperatorSave" label="Save Data"></button>
+    <button id="buttonOperatorCancel" label="Cancel" ></button>
+</window>
+</zk>
