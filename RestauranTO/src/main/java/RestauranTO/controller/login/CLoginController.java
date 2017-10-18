@@ -19,6 +19,9 @@ import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Timer;
 
+import RestauranTO.Constants.SystemConstants;
+import RestauranTO.Database.CDatabaseConnection;
+import RestauranTO.Database.CDatabaseConnectionConfig;
 import RestauranTO.Database.Dao.UserDAO;
 import RestauranTO.Database.Datamodel.TblUser;
 
@@ -42,10 +45,7 @@ public class CLoginController extends SelectorComposer<Component> {
     
     private static final long serialVersionUID = -434240304817423997L;
     
-    protected CExtendedLogger controllerLogger = null;
-    
-    protected CLanguage controllerLanguage = null;
-    
+
     @Override
     public void doAfterCompose( Component comp ) {
         
@@ -53,13 +53,11 @@ public class CLoginController extends SelectorComposer<Component> {
          
             super.doAfterCompose( comp );
             
-            controllerLogger = (CExtendedLogger) Sessions.getCurrent().getWebApp().getAttribute( SystemConstants._Webapp_Logger_App_Attribute_Key );
-    
+           
         }
         catch ( Exception ex ) {
             
-            if ( controllerLogger != null )   
-                controllerLogger.logException( "-1021", ex.getMessage(), ex );        
+            ex.printStackTrace();
             
         }
     
@@ -89,11 +87,11 @@ public class CLoginController extends SelectorComposer<Component> {
                             
                 String strRunningPath = Sessions.getCurrent().getWebApp().getRealPath( SystemConstants._Web_Inf_Dir ) + File.separator;
                 
-                if ( databaseConnectionConfig.loadConfig( strRunningPath + SystemConstants._Config_Dir + SystemConstants._Database_Config_File, controllerLogger, controllerLanguage ) ) {
+                if ( databaseConnectionConfig.loadConfig( strRunningPath + SystemConstants._Config_Dir + SystemConstants._Database_Config_File ) ) {
                     
-                    if ( databaseConnection.makeConnectionToDatabase( databaseConnectionConfig, controllerLogger, controllerLanguage ) ) {
+                    if ( databaseConnection.makeConnectionToDatabase( databaseConnectionConfig ) ) {
 
-                        TblUser tblOperator = UserDAO.checkData( databaseConnection, strOperator, strPassword, controllerLogger, controllerLanguage );
+                        TblUser tblOperator = UserDAO.checkData( databaseConnection, strOperator, strPassword );
                         
                         if ( tblOperator != null ) {
                                             
@@ -107,26 +105,17 @@ public class CLoginController extends SelectorComposer<Component> {
                                                         
                             currentSession.setAttribute( SystemConstants._Operator_Credential_Session_Key, tblOperator );
                             
-                            controllerLogger.logMessage( "1" , CLanguage.translateIf( controllerLanguage, "Saved user credential in session for user [%s]", tblOperator.getStrName() ) );
+                                                        
+                            //String strLogPath = strRunningPath + SystemConstants._Logs_Dir + strOperator + File.separator + strDateTime + File.separator;
+                                                        
+                           // currentSession.setAttribute( SystemConstants._Log_Path_Session_Key, strLogPath );
 
-                            String strDateTime = Utilities.getDateInFormat( ConstantsCommonClasses._Global_Date_Time_Format_File_System_24, null );
-                                                        
-                            String strLogPath = strRunningPath + SystemConstants._Logs_Dir + strOperator + File.separator + strDateTime + File.separator;
-                                                        
-                            currentSession.setAttribute( SystemConstants._Log_Path_Session_Key, strLogPath );
-
-                            controllerLogger.logMessage( "1" , CLanguage.translateIf( controllerLanguage, "Saved user log path [%s] in session for user [%s]", strLogPath, strOperator ) );
-                                                        
-                            currentSession.setAttribute( SystemConstants._Login_Date_Time_Session_Key, strDateTime );
-                            
-                            controllerLogger.logMessage( "1" , CLanguage.translateIf( controllerLanguage, "Saved user login date time [%s] in session for user [%s]", strDateTime, strOperator ) );
-                                                        
+                            //currentSession.setAttribute( SystemConstants._Login_Date_Time_Session_Key, strDateTime );
+                                                                             
                             List<String> loggedSessionLoggers = new LinkedList<String>();
                                                         
                             currentSession.setAttribute( SystemConstants._Logged_Session_Loggers, loggedSessionLoggers );
-                                                        
-                            UserDAO.updateLogin( databaseConnection, TblUser.getStrID(), controllerLogger, controllerLanguage );                            
-                                                        
+                                                                                                                
                             Executions.sendRedirect( "/views/dev027/home/home.zul" ); 
                             
                         }
@@ -155,8 +144,7 @@ public class CLoginController extends SelectorComposer<Component> {
         }
         catch ( Exception ex ) {
             
-            if ( controllerLogger != null )   
-                controllerLogger.logException( "-1021", ex.getMessage(), ex );        
+         ex.printStackTrace();   
             
         }
     
