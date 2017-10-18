@@ -2,6 +2,8 @@ package RestauranTO.Database.Dao;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.UUID;
 
 import RestauranTO.Database.CDatabaseConnection;
 import RestauranTO.Database.Datamodel.TblUser;
@@ -73,6 +75,36 @@ public class UserDAO {
         
         return result;
         
+    }
+    
+ public static boolean AddOperator( final CDatabaseConnection dbConnection, TblUser tblUser) {
+        
+        boolean result = false;
+        
+        try {
+            if ( dbConnection != null && dbConnection.getDatabaseConnection() != null ) {
+                
+                Statement statement = dbConnection.getDatabaseConnection().createStatement();
+                
+                final String strSQL = "INSERT INTO tbluser (ID, Name, Password, Email, Picture, Role, CreatedAtDate) VALUES ('" + UUID.randomUUID().toString() + "', '" + tblUser.getStrName() + "', '" + tblUser.getStrPassword() + "', '" + tblUser.getStrEmail() + "', '" + tblUser.getStrPicture() + "', 'Regular User', '" + "', '" + LocalDate.now().toString() + "')";
+                
+                statement.executeUpdate( strSQL );
+                
+                dbConnection.getDatabaseConnection().commit();
+                
+                statement.close();
+                
+                result = true;
+            }
+            
+        }
+        
+        catch ( Exception ex ) {
+            
+            ex.getStackTrace();
+            
+        }
+        return result;
     }
     
 }
