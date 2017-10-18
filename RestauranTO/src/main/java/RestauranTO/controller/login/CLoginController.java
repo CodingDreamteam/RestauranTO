@@ -116,7 +116,7 @@ public class CLoginController extends SelectorComposer<Component> {
                                                         
                             currentSession.setAttribute( SystemConstants._Logged_Session_Loggers, loggedSessionLoggers );
                                                                                                                 
-                            Executions.sendRedirect( "/views/dev027/home/home.zul" ); 
+                            Executions.sendRedirect( "/index.zul" ); 
                             
                         }
                         else {
