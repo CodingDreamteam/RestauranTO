@@ -78,5 +78,5 @@ public class SystemConstants {
     
     public static final String _Logged_Session_Loggers = "loggedSessionLoggers";
     
-    
+    public static final String _Picture_Folder = "pictures";
 }

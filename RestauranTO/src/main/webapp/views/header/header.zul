@@ -1,12 +1,15 @@
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
 <zk>
-    <div hflex="1" vflex="1" apply="" sclass="banner" style="background-color:green;color: white; padding: 5px 10px;">
+    <div hflex="1" vflex="1" apply="RestauranTO.controller.header.CHeaderController" sclass="banner" style="background-color:green;color: white; padding: 5px 10px;">
         <hbox hflex="1" vflex="1" align="center">
+          <Label id="labeluser" value=""/> 
             <div width="900px">
                <label value="RestauranTO" style="cursor:hand;cursor:pointer" /> 
                <label id="labellogin" value="Login" style="float:right; margin-left:10px;cursor:hand;cursor:pointer"/>
-               <label id="labelL" value="|" style= "float:right; margin-left:10px;"/>
-               <label id="labelregister" value="Registrarse" style="float:right;cursor:hand;cursor:pointer"/>
+               <label id="labellogout" value="Logout" visible="false" style="float:right; margin-left:10px;cursor:hand;cursor:pointer" />
+               <label id="labelL" value="|" style= "float:right; margin-left:10px;"/>               
+               <label id="labelsugestion" value="sugestion" style="float:right;cursor:hand;cursor:pointer"/> 
+               <label id="labelregister" value="Registrarse" visible="false" style="float:right;cursor:hand;cursor:pointer"/>
             </div>
         </hbox>
     </div>
