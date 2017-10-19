@@ -22,6 +22,7 @@ import org.zkoss.zul.Window;
 
 import RestauranTO.Constants.SystemConstants;
 import RestauranTO.Database.CDatabaseConnection;
+import RestauranTO.Database.CDatabaseConnectionConfig;
 import RestauranTO.Database.Dao.RestaurantDAO;
 import RestauranTO.Database.Datamodel.TblRestaurant;
 import RestauranTO.Database.Datamodel.TblUser;
@@ -37,6 +38,9 @@ public class CHeaderController extends SelectorComposer<Component> {
     protected Listbox listboxRestaurantes;
     
     protected TblRestaurant tblRestaurant = null;
+    
+    protected 
+    
     
     @Wire
     Label labelregister;
@@ -119,7 +123,9 @@ public class CHeaderController extends SelectorComposer<Component> {
                 
                     List<TblRestaurant> listData = RestaurantDAO.SearchRestaurants( dbConnection, strSearch, localLogger, localLanguage );
                     
-                    Events.echoEvent( new Event ( "onFinish", listboxRestaurantes, listData ) );
+                    Session currentSession = Sessions.getCurrent();
+                    
+                    currentSession.setAttribute("RestaurantList", listData );
                     
                     Executions.sendRedirect( "/views/list/list.zul" ); 
                     
