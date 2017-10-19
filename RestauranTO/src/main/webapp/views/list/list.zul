@@ -12,7 +12,15 @@
     
     <center id="mainContent" autoscroll="true" border="none">
    
-      <listbox id="listboxRestaurantes"/>   
+      <listbox id="listboxRestaurantes">
+       <listhead width="100%" height="100%">
+          <listheader label="Name" width="19%"></listheader>
+          <listheader label="Description" width="19%"></listheader>
+          <listheader label="Direction" width="19%"></listheader>
+          <listheader label="Email" width="19%"></listheader>
+          <listheader label="Picture" width="19%"></listheader>
+        </listhead>
+      </listbox>   
       
     </center>
     
