@@ -14,16 +14,19 @@ public class TblSugestions implements Serializable {
     
     protected String strEmail;
     
+    protected String strPhoneNumber;
+    
     protected String strImage;
 
     
     
-    public TblSugestions( String strID, String strName, String strDirection, String strEmail, String strImage ) {
+    public TblSugestions( String strID, String strName, String strDirection, String strEmail, String strPhoneNumber ,String strImage ) {
         super();
         this.strID = strID;
         this.strName = strName;
         this.strDirection = strDirection;
         this.strEmail = strEmail;
+        this.strPhoneNumber = strPhoneNumber;
         this.strImage = strImage;
     }
 
@@ -98,7 +101,18 @@ public class TblSugestions implements Serializable {
     }
 
 
+    public String getStrPhoneNumber() {
+        
+        return strPhoneNumber;
+    }
 
+
+
+    
+    public void setStrPhoneNumber( String strPhoneNumber ) {
+        
+        this.strPhoneNumber = strPhoneNumber;
+    }
     
     public String getStrImage() {
         

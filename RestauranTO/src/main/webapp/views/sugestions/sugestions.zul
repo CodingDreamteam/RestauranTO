@@ -1,6 +1,6 @@
 <?page title="Sugestions" contentType="text/html; charset=UTF-8"?>
 <zk>
-    <window id="windowSugestions" xmlns:w="client" apply="RestauranTO.controller.rating.CRatingController" title="" border="normal" hflex="min" Style="background:#CECECE;" closable="true">        
+    <window id="windowSugestions" xmlns:w="client" apply="RestauranTO.controller.sugestions.CSugestionsController" title="" border="normal" hflex="min" Style="background:#CECECE;" closable="true">        
         <vlayout width="400px">
             <grid hflex="min">
                 <rows>
@@ -17,14 +17,28 @@
                     <row>
                         
                         <label id="labelDirection" value="Direccion" width="150px" style="font-size:11pt;font-style:italic" />
-                        <textbox id="textboxDirection" value="" width="250px" tabindex="1"></textbox>
+                        <textbox id="textboxDirection" value="" width="250px" tabindex="5"></textbox>
    
                     </row>
                     
                     <row>
                         
-                        <label id="labelPhoneNumber" value="Direccion" width="150px" style="font-size:11pt;font-style:italic" />
-                        <textbox id="textboxDirection" value="" width="250px" tabindex="1"></textbox>
+                        <label id="labelPhoneNumber" value="Numero de telefono" width="150px" style="font-size:11pt;font-style:italic" />
+                        <textbox id="textboxPhoneNumber" value="" width="250px" tabindex="3"></textbox>
+   
+                    </row>
+                    
+                    <row>
+                        
+                        <label id="labelEmail" value="Email del restaurante" width="150px" style="font-size:11pt;font-style:italic" />
+                        <textbox id="textboxEmail" value="" width="250px" tabindex="4"></textbox>
+   
+                    </row>
+                    
+                    <row>
+                        
+                        <label id="labelPicture" value="Imagen del restaurante (opcional)" width="150px" style="font-size:11pt;font-style:italic" />
+                        <button id="buttonPicture" label="Upload Picture"></button>
    
                     </row>
                               
