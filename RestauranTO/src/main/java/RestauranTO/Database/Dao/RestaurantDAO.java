@@ -13,7 +13,7 @@ import RestauranTO.Database.Datamodel.TblRestaurant;
 
 public class RestaurantDAO {
     
- public static List<TblRestaurant> SearchRestaurants ( final CDatabaseConnection dbConnection, String strName, CExtendedLogger localLogger, CLanguage localLanguage ) {
+ public static List<TblRestaurant> SearchRestaurants ( final CDatabaseConnection dbConnection, String strName ) {
         
         List<TblRestaurant> result = new ArrayList<TblRestaurant>();
         
@@ -50,11 +50,6 @@ public class RestaurantDAO {
         catch (Exception ex) {
             
           ex.printStackTrace();  
-          if ( localLogger != null ) {
-                
-            localLogger.logException( "-1021", ex.getMessage(), ex );
-                
-          }
                         
         }
         

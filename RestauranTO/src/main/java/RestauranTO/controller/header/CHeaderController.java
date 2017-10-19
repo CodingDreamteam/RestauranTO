@@ -121,7 +121,7 @@ public class CHeaderController extends SelectorComposer<Component> {
                     
                     CDatabaseConnection dbConnection = ( CDatabaseConnection ) sesion.getAttribute( SystemConstants._DB_Connection_Session_Key );
                 
-                    List<TblRestaurant> listData = RestaurantDAO.SearchRestaurants( dbConnection, strSearch, localLogger, localLanguage );
+                    List<TblRestaurant> listData = RestaurantDAO.SearchRestaurants( dbConnection, strSearch );
                     
                     Session currentSession = Sessions.getCurrent();
                     

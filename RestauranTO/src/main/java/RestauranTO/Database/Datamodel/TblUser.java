@@ -19,11 +19,13 @@ public class TblUser implements Serializable {
     
     protected String strRole;
     
+    protected String strPhoneNumber;
+    
     protected LocalDate CreatedAtDate;
     
     protected LocalDate DisabledAtDate;
     
-    public TblUser( String strID, String strName, String strPassword, String strEmail, String strPicture, String strRole, LocalDate createdAtDate, LocalDate DisabledAtDate) {
+    public TblUser( String strID, String strName, String strPassword, String strEmail, String strPicture, String strRole, String strPhoneNumber, LocalDate createdAtDate, LocalDate DisabledAtDate) {
         super();
         this.strID = strID;
         this.strName = strEmail;
@@ -31,6 +33,7 @@ public class TblUser implements Serializable {
         this.strEmail = strEmail;
         this.strPicture = strPicture;
         this.strRole = strRole;
+        this.strPhoneNumber = strPhoneNumber;
         this.CreatedAtDate = createdAtDate;
         this.DisabledAtDate = DisabledAtDate;
 }
@@ -97,6 +100,16 @@ public class TblUser implements Serializable {
     public void setStrRole( String strRole ) {
         
         this.strRole = strRole;
+    }
+    
+    public String getStrPhoneNumber() {
+        
+        return strPhoneNumber;
+    }
+    
+    public void setStrPhoneNumber( String strPhoneNumber ) {
+        
+        this.strPhoneNumber = strPhoneNumber;
     }
     
     public LocalDate getCreatedAtDate() {

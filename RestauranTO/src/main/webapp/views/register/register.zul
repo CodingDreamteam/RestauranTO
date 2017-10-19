@@ -1,19 +1,63 @@
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
 <zk>
 <window id="windowRegister" xmlns:w="client" apply="RestauranTO.controller.register.CRegisterController" title="Register" border="none" hflex="min" closable="true">
-    <vlayout width="100%">
-      <label value="Email" style="font-size:11pt;font-style:italic" />
-      <textbox id="textboxEmail" width="100px" />
-      <label value="Name :" style="font-size:11pt;font-style:italic" />
-      <textbox id="textboxName" width="100px" />
-      <label value="Password :" style="font-size:11pt;font-style:italic" />
-      <textbox id="textboxPassword" type="password" width="100px" />
-      <label value="Repeat Password :" style="font-size:11pt;font-style:italic" />
-      <textbox id="textboxRepeatPassword" type="password" width="100px" />
-      <label value="Picture :" width="100px" />
-      <button id="buttonPicture" label="Upload Picture"></button>
-    </vlayout>
-    <button id="buttonSave" label="Register"></button>
-    <button id="buttonCancel" label="Cancel" ></button>
+   <vlayout width="100%">
+    <grid hflex="min">
+        <rows>
+        
+          <row>
+          
+                 <label value="Name :" style="font-size:11pt;font-style:italic" />
+                 <textbox id="textboxName" width="100px" />
+              
+          </row>
+                    
+          <row >
+                      
+                 <label value="Email" style="font-size:11pt;font-style:italic" />
+                 <textbox id="textboxEmail" width="100px" /> 
+                        
+          </row>
+          
+          <row>
+              
+                <label value="Password :" style="font-size:11pt;font-style:italic" />
+                <textbox id="textboxPassword" type="password" width="100px" />
+            
+          </row>        
+          
+          <row>
+          
+                <label value="Repeat Password :" style="font-size:11pt;font-style:italic" />
+                <textbox id="textboxRepeatPassword" type="password" width="100px" />
+          
+          </row>        
+          
+          <row>
+          
+                <label value="Picture :" width="100px" />
+                <button id="buttonPicture" label="Upload Picture"></button>
+                    
+          </row>      
+                
+          <row>
+          
+              <label value="Numero de telefono" style="font-size:11pt;font-style:italic" />
+              <textbox id="textboxPhoneNumber"  width="100px" />
+          
+          </row> 
+                              
+         </rows>
+                
+      </grid>
+      
+      <div id="buttoncontainer">
+            
+         <button id="buttonSave" label="Register"></button>
+         <button id="buttonCancel" label="Cancel" ></button>
+                
+      </div>
+   </vlayout>
+
 </window>
 </zk>

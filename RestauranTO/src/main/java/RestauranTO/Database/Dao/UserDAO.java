@@ -85,13 +85,25 @@ public class UserDAO {
             if ( dbConnection != null && dbConnection.getDatabaseConnection() != null ) {
                 
                 Statement statement = dbConnection.getDatabaseConnection().createStatement();
-                                  
-                final String strSQL = "INSERT INTO tbluser (ID, Name, Password, Email, Picture, Role, CreatedAtDate) VALUES ('" + UUID.randomUUID().toString() + "', '" + tblUser.getStrName() + "', '" + tblUser.getStrPassword() + "', '" + tblUser.getStrEmail() + "', '" + tblUser.getStrPicture() + "', 'Regular User', '" + "', '" + LocalDate.now().toString() + "')";
+                
+                String ID = UUID.randomUUID().toString();
+                
+                final String strSQL = "INSERT INTO tbluser (ID, Name, Password, Email, Picture, Role, CreatedAtDate) VALUES ('" + ID + "', '" + tblUser.getStrName() + "', '" + tblUser.getStrPassword() + "', '" + tblUser.getStrEmail() + "', '" + tblUser.getStrPicture() + "', 'Regular User', '" + "', '" + LocalDate.now().toString() + "')";
                 
                 statement.executeUpdate( strSQL );
                 
                 dbConnection.getDatabaseConnection().commit();
                 
+                if ( tblUser.getStrPhoneNumber() != null) {
+                            
+                  String strSQL2 = "INSERT INTO tbluser_phonenumber VALUES ( '" + ID + "', '" + tblUser.getStrPhoneNumber() + "')"; 
+                    
+                  statement.executeUpdate( strSQL2 );  
+                   
+                  dbConnection.getDatabaseConnection().commit(); 
+                  
+                }
+                                
                 statement.close();
                 
                 result = true;

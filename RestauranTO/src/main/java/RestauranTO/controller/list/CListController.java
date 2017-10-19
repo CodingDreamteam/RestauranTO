@@ -9,7 +9,6 @@ import org.zkoss.zul.Listitem;
 import org.zkoss.zul.ListitemRenderer;
 
 import RestauranTO.Database.Datamodel.TblRestaurant;
-import web.zk.frontend.elysiumst.smsgateway.dev008.database.datamodel.TblContact;
 
 public class CListController implements Serializable{
 

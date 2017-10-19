@@ -45,6 +45,8 @@ public class CRegisterController extends SelectorComposer<Component> {
     @Wire
     Textbox textboxRepeatPassword;
     @Wire
+    Textbox textboxPhoneNumber;
+    @Wire
     Window windowRegister;
     
     protected Image Picture = null;
@@ -152,7 +154,9 @@ public class CRegisterController extends SelectorComposer<Component> {
              tbluser.setStrEmail( textboxEmail.getValue() ); 
              if ( Picture != null )
              tbluser.setStrPicture( Picture.getName() );
-             
+             if ( textboxPhoneNumber.getValue().isEmpty() != true )
+             tbluser.setStrPhoneNumber( textboxPhoneNumber.getValue() );    
+                 
              CDatabaseConnection databaseConnection = new CDatabaseConnection();
              
              CDatabaseConnectionConfig databaseConnectionConfig = new CDatabaseConnectionConfig();

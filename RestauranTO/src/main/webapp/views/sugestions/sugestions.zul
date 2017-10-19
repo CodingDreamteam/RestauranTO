@@ -1,0 +1,41 @@
+<?page title="Sugestions" contentType="text/html; charset=UTF-8"?>
+<zk>
+    <window id="windowSugestions" xmlns:w="client" apply="RestauranTO.controller.rating.CRatingController" title="" border="normal" hflex="min" Style="background:#CECECE;" closable="true">        
+        <vlayout width="400px">
+            <grid hflex="min">
+                <rows>
+                
+                    <row>
+                    
+                    
+                        <label id="labelName" value="Nombre" width="150px" style="font-size:11pt;font-style:italic" />
+                        <textbox id="textboxName" value="" width="250px" tabindex="2"></textbox>
+
+                        
+                    </row>
+                    
+                    <row>
+                        
+                        <label id="labelDirection" value="Direccion" width="150px" style="font-size:11pt;font-style:italic" />
+                        <textbox id="textboxDirection" value="" width="250px" tabindex="1"></textbox>
+   
+                    </row>
+                    
+                    <row>
+                        
+                        <label id="labelPhoneNumber" value="Direccion" width="150px" style="font-size:11pt;font-style:italic" />
+                        <textbox id="textboxDirection" value="" width="250px" tabindex="1"></textbox>
+   
+                    </row>
+                              
+                </rows>
+                
+            </grid>
+            <div id="buttoncontainer">
+            
+                <button id="buttonSubmit" label="Realizar sugerencia" style="float:right;margin-left:15px"></button>
+                
+            </div>
+        </vlayout>
+    </window>
+</zk>  

@@ -8,8 +8,8 @@
         <label id="labellogin" value="Login" style="margin-left:140px;margin-up:100%;cursor:hand;cursor:pointer" />
         <label id="labellogout" value="Logout" visible="false" style="margin-left:140px;margin-up:100px;cursor:hand;cursor:pointer" />
         <label id="labelL" value="|" style="margin-left:10px;" />
-        <label id="labelsugestion" value="sugestion" style="margin-left:10px;cursor:hand;cursor:pointer" />
-        <label id="labelregister" value="Registrarse" visible="false" style="margin-left:10px;cursor:hand;cursor:pointer" />
+        <label id="labelsugestion" value="sugestion" visible="false" style="margin-left:10px;cursor:hand;cursor:pointer" />
+        <label id="labelregister" value="Registrarse" style="margin-left:10px;cursor:hand;cursor:pointer" />
         <textbox class="textbox search" id="search" height="30%" width="20%" style="float:left;margin-left:100px;background:white;" />
         <button id="buttonSearch" image="/resources/lupa.jpg" height="1%" width="1%" style="float:left;" />
       </div>

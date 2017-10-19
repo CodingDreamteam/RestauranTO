@@ -1,6 +1,6 @@
 <?page title="Rating" contentType="text/html; charset=UTF-8"?>
 <zk>
-    <window id="windowContactEditor" xmlns:w="client" apply="RestauranTO.controller.rating.CRatingController" title="" border="normal" hflex="min" Style="background:#CECECE;" closable="true">        
+    <window id="windowRating" xmlns:w="client" apply="RestauranTO.controller.rating.CRatingController" title="" border="normal" hflex="min" Style="background:#CECECE;" closable="true">        
         <vlayout width="400px">
             <grid hflex="min">
                 <rows>
