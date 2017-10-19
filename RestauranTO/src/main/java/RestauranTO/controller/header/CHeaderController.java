@@ -1,6 +1,7 @@
 package RestauranTO.controller.header;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.zkoss.zk.ui.Component;
@@ -9,19 +10,33 @@ import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zul.Button;
 import org.zkoss.zul.Label;
+import org.zkoss.zul.Listbox;
+import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
 import RestauranTO.Constants.SystemConstants;
+import RestauranTO.Database.CDatabaseConnection;
+import RestauranTO.Database.Dao.RestaurantDAO;
+import RestauranTO.Database.Datamodel.TblRestaurant;
 import RestauranTO.Database.Datamodel.TblUser;
+
 
 
 public class CHeaderController extends SelectorComposer<Component> {
 
     private static final long serialVersionUID = 411818559727221830L;
+    
+    protected String strSearch = null;
+    
+    protected Listbox listboxRestaurantes;
+    
+    protected TblRestaurant tblRestaurant = null;
     
     @Wire
     Label labelregister;
@@ -33,6 +48,10 @@ public class CHeaderController extends SelectorComposer<Component> {
     Label labellogin;
     @Wire
     Label labeluser;
+    @Wire
+    Textbox search;    
+    @Wire
+    Button buttonSearch;
     
     protected TblUser tblUser = null;
     
@@ -60,6 +79,9 @@ public class CHeaderController extends SelectorComposer<Component> {
                labeluser.setValue( tblUser.getStrName() );
                
             }
+            tblRestaurant = ( TblRestaurant ) sesion.getAttribute( SystemConstants._Operator_Credential_Session_Key );
+            
+            listboxRestaurantes = ( Listbox ) execution.getArg().get( "listboRestaurantes" );
             
         }
         
@@ -85,4 +107,25 @@ public class CHeaderController extends SelectorComposer<Component> {
             
         }
     
+        @Listen( "onClick=#buttonSearch" )
+        public void onClickbuttonSearch( Event event ) {
+         
+            if ( search.getValue().isEmpty() == false ) {  
+                
+                strSearch = search.getValue();
+                if ( sesion.getAttribute( SystemConstants._DB_Connection_Session_Key ) instanceof CDatabaseConnection ) {
+                    
+                    CDatabaseConnection dbConnection = ( CDatabaseConnection ) sesion.getAttribute( SystemConstants._DB_Connection_Session_Key );
+                
+                    List<TblRestaurant> listData = RestaurantDAO.SearchRestaurants( dbConnection, strSearch, localLogger, localLanguage );
+                    
+                    Events.echoEvent( new Event ( "onFinish", listboxRestaurantes, listData ) );
+                    
+                    Executions.sendRedirect( "/views/list/list.zul" ); 
+                    
+                    
+             }
+            
+        }
+}
 }
