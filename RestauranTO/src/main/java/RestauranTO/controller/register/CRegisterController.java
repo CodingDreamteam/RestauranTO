@@ -8,6 +8,7 @@ import org.zkoss.util.media.Media;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Execution;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.UploadEvent;
@@ -17,7 +18,14 @@ import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.Messagebox;
+import org.zkoss.zul.Textbox;
+import org.zkoss.zul.Window;
+
 import RestauranTO.Constants.SystemConstants;
+import RestauranTO.Database.CDatabaseConnection;
+import RestauranTO.Database.CDatabaseConnectionConfig;
+import RestauranTO.Database.Dao.UserDAO;
+import RestauranTO.Database.Datamodel.TblUser;
 
 
 public class CRegisterController extends SelectorComposer<Component> {
@@ -28,6 +36,18 @@ public class CRegisterController extends SelectorComposer<Component> {
     Button buttonPicture;
     @Wire
     Button buttonOperatorSave;
+    @Wire
+    Textbox textboxEmail;
+    @Wire
+    Textbox textboxName;
+    @Wire
+    Textbox textboxPassword;
+    @Wire
+    Textbox textboxRepeatPassword;
+    @Wire
+    Window windowRegister;
+    
+    protected Image Picture = null;
     
     protected Label labelregister = null;
     
@@ -99,4 +119,75 @@ public class CRegisterController extends SelectorComposer<Component> {
         });
 
     }
+    
+    
+    @Listen( "onClick=#buttonCancel" )
+    public void onClickbuttonCancel( Event event ) { 
+        
+       windowRegister.detach(); 
+        
+        
+    }
+    
+    @Listen( "onClick=#buttonSave" )
+    public void onClickbuttonAddcontact( Event event ) { 
+        
+       if ( textboxEmail.getValue().isEmpty() || textboxName.getValue().isEmpty() || textboxPassword.getValue().isEmpty() || textboxRepeatPassword.getValue().isEmpty() ) {
+           
+          Messagebox.show( "Debe llenar almenos el correo, la contraseña y el nombre de usuario" ); 
+           
+       }
+       else {
+           
+          if ( textboxPassword.getValue() != textboxRepeatPassword.getValue() ) {
+              
+              Messagebox.show( "las contraseñas no concuerdan" );
+              
+          }
+          else {
+              
+             TblUser tbluser = new TblUser(); 
+             tbluser.setStrName( textboxName.getValue() );
+             tbluser.setStrPassword( textboxPassword.getValue() );
+             tbluser.setStrEmail( textboxEmail.getValue() ); 
+             if ( Picture != null )
+             tbluser.setStrPicture( Picture.getName() );
+             
+             CDatabaseConnection databaseConnection = new CDatabaseConnection();
+             
+             CDatabaseConnectionConfig databaseConnectionConfig = new CDatabaseConnectionConfig();
+                         
+             String strRunningPath = Sessions.getCurrent().getWebApp().getRealPath( SystemConstants._Web_Inf_Dir ) + File.separator;
+             
+             if ( databaseConnectionConfig.loadConfig( strRunningPath + SystemConstants._Config_Dir + SystemConstants._Database_Config_File ) ) {
+                 
+                 if ( databaseConnection.makeConnectionToDatabase( databaseConnectionConfig ) ) {
+                     
+                   if (  UserDAO.AddOperator( databaseConnection, tbluser ) ) {
+                       
+                      Messagebox.show( "Registro exitoso" );
+                       
+                   }
+                   else {
+                       
+                       Messagebox.show( "Error con el registro" );
+                       
+                   }
+                     
+                 }
+                 
+                 databaseConnection.closeConnectionToDB();
+                 
+             }             
+             
+          }
+           
+           
+       }
+        
+    }
+    
+    
 }
+ 
+        

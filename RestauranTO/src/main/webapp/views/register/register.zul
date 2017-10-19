@@ -13,7 +13,7 @@
       <label value="Picture :" width="100px" />
       <button id="buttonPicture" label="Upload Picture"></button>
     </vlayout>
-    <button id="buttonOperatorSave" label="Save Data"></button>
-    <button id="buttonOperatorCancel" label="Cancel" ></button>
+    <button id="buttonSave" label="Register"></button>
+    <button id="buttonCancel" label="Cancel" ></button>
 </window>
 </zk>

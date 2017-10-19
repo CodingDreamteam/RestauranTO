@@ -85,7 +85,7 @@ public class UserDAO {
             if ( dbConnection != null && dbConnection.getDatabaseConnection() != null ) {
                 
                 Statement statement = dbConnection.getDatabaseConnection().createStatement();
-                
+                                  
                 final String strSQL = "INSERT INTO tbluser (ID, Name, Password, Email, Picture, Role, CreatedAtDate) VALUES ('" + UUID.randomUUID().toString() + "', '" + tblUser.getStrName() + "', '" + tblUser.getStrPassword() + "', '" + tblUser.getStrEmail() + "', '" + tblUser.getStrPicture() + "', 'Regular User', '" + "', '" + LocalDate.now().toString() + "')";
                 
                 statement.executeUpdate( strSQL );
