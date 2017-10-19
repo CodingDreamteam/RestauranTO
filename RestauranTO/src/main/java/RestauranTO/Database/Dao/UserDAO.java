@@ -77,7 +77,7 @@ public class UserDAO {
         
     }
     
- public static boolean AddOperator( final CDatabaseConnection dbConnection, TblUser tblUser) {
+    public static boolean AddUser( final CDatabaseConnection dbConnection, TblUser tblUser) {
         
         boolean result = false;
         
@@ -107,4 +107,35 @@ public class UserDAO {
         return result;
     }
     
+    public static boolean AddRating( final CDatabaseConnection dbConnection, String Comment, int Rating, String UserID, String RestaurantID) {
+        
+        boolean result = false;
+        
+        try {
+            
+            if ( dbConnection != null && dbConnection.getDatabaseConnection() != null ) {
+                
+                Statement statement = dbConnection.getDatabaseConnection().createStatement();
+                                  
+                final String strSQL = "INSERT INTO tbluser (ID, User_ID, Restaurant_ID, Comment, Rating) VALUES ('" + UUID.randomUUID().toString() + "', '" + UserID + "', '" + RestaurantID + "', '" + Comment + "', '" + Rating + "')";
+                
+                statement.executeUpdate( strSQL );
+                
+                dbConnection.getDatabaseConnection().commit();
+                
+                statement.close();
+                
+                result = true;
+            }
+            
+        }
+        
+        catch ( Exception ex ) {
+            
+            ex.getStackTrace();
+            
+        }
+        return result;
+    } 
+ 
 }

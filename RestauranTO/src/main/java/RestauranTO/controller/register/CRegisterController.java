@@ -163,7 +163,7 @@ public class CRegisterController extends SelectorComposer<Component> {
                  
                  if ( databaseConnection.makeConnectionToDatabase( databaseConnectionConfig ) ) {
                      
-                   if (  UserDAO.AddOperator( databaseConnection, tbluser ) ) {
+                   if (  UserDAO.AddUser( databaseConnection, tbluser ) ) {
                        
                       Messagebox.show( "Registro exitoso" );
                        

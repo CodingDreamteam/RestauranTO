@@ -1,0 +1,40 @@
+<?page title="Rating" contentType="text/html; charset=UTF-8"?>
+<zk>
+    <window id="windowContactEditor" xmlns:w="client" apply="RestauranTO.controller.rating.CRatingController" title="" border="normal" hflex="min" Style="background:#CECECE;" closable="true">        
+        <vlayout width="400px">
+            <grid hflex="min">
+                <rows>
+                    <row>
+                        <label id="labelComment" value="Comentario" width="150px" style="font-size:11pt;font-style:italic" />
+                        <textbox id="textboxComment" value="" width="250px" rows="4" tabindex="2"></textbox>
+                    </row>
+                    
+                    <row >
+                      
+                      <label id="labelRating" value="Rating" width="150px"/>
+                        
+                      <hbox width="150px" >
+                        <image  id="star1" src="/resources/blank star.png" width="55px" />
+                        
+                        <image  id="star2" src="/resources/blank star.png" width="55px" />
+                        
+                        <image  id="star3" src="/resources/blank star.png" width="55px" />
+                        
+                        <image  id="star4" src="/resources/blank star.png" width="55px" />
+                        
+                        <image  id="star5" src="/resources/blank star.png" width="55px" />
+                        
+                      </hbox>   
+                    </row>
+                              
+                </rows>
+                
+            </grid>
+            <div id="buttoncontainer">
+            
+                <button id="buttonSubmit" label="Realizar Rating" style="float:right;margin-left:15px"></button>
+                
+            </div>
+        </vlayout>
+    </window>
+</zk>   
