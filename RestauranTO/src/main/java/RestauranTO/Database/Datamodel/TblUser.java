@@ -3,6 +3,8 @@ package RestauranTO.Database.Datamodel;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import RestauranTO.crypt.BCrypt;
+
 public class TblUser implements Serializable {
 
     private static final long serialVersionUID = -5001151189415958989L;
@@ -68,6 +70,15 @@ public class TblUser implements Serializable {
     }
     
     public void setStrPassword( String strPassword ) {
+        if (strPassword.startsWith( "$2a$105" ) == false) {
+            
+            String strPasswordKey = BCrypt.gensalt( 10 ); 
+            
+            strPassword = BCrypt.hashpw( strPassword, strPasswordKey ); 
+            
+            strPassword = strPassword.replace( "$2a$10", "$2y$10" );
+            
+        }
         
         this.strPassword = strPassword;
     }
