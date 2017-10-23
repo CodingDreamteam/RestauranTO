@@ -141,7 +141,7 @@ public class CRegisterController extends SelectorComposer<Component> {
        }
        else {
            
-          if ( textboxPassword.getValue() != textboxRepeatPassword.getValue() ) {
+          if ( textboxPassword.getValue() == textboxRepeatPassword.getValue() ) {
               
               Messagebox.show( "las contraseñas no concuerdan" );
               
