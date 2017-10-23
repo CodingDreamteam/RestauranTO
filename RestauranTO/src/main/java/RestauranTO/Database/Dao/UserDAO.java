@@ -88,7 +88,7 @@ public class UserDAO {
                 
                 String ID = UUID.randomUUID().toString();
                 
-                final String strSQL = "INSERT INTO tbluser (ID, Name, Password, Email, Picture, Role, CreatedAtDate) VALUES ('" + ID + "', '" + tblUser.getStrName() + "', '" + tblUser.getStrPassword() + "', '" + tblUser.getStrEmail() + "', '" + tblUser.getStrPicture() + "', 'Regular User', '" + "', '" + LocalDate.now().toString() + "')";
+                final String strSQL = "INSERT INTO tbluser (ID, Name, Password, Email, Role, CreatedAtDate) VALUES ('" + ID + "', '" + tblUser.getStrName() + "', '" + tblUser.getStrPassword() + "', '" + tblUser.getStrEmail()  + "', 'Regular User', '"  + LocalDate.now().toString() + "')";
                 
                 statement.executeUpdate( strSQL );
                 
@@ -113,7 +113,7 @@ public class UserDAO {
         
         catch ( Exception ex ) {
             
-            ex.getStackTrace();
+            ex.printStackTrace();
             
         }
         return result;

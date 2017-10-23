@@ -1,0 +1,14 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<zk>
+  <div hflex="1" vflex="1" apply="" sclass="banner" style="background-color:green;color: white; padding: 5px 10px;">
+    <vbox hflex="1" vflex="1" align="center">
+      <label id="labeluser" value="" />
+        <image src="/resources/RestauranTO.jpg" width="135px" style="float:left;margin-up:100px;cursor:hand;cursor:pointer" />
+      <div width="700%" height="10%">        
+        <textbox class="textbox search" id="search" height="30%" width="20%" style="float:left;margin-left:100px;background:white;" />
+        <button id="buttonSearch" label="buscar" height="1%" width="1%" style="float:left;" />
+        <label id="labelzonesearch" value="buscar por zona"
+      </div>
+    </vbox>
+  </div>
+</zk>
