@@ -25,8 +25,10 @@ public class TblRestaurant implements Serializable {
     protected LocalDate CreatedAtDate;
     
     protected LocalDate DisabledAtDate;
+    
+    protected String Zone;
 
-    public TblRestaurant( String strID, String strName, String strDescription, String strEmail, String strPicture, int intCapacity, String strDirection, LocalDate createdAtDate, LocalDate disabledAtDate ) {
+    public TblRestaurant( String strID, String strName, String strDescription, String strEmail, String strPicture, int intCapacity, String strDirection, LocalDate createdAtDate, LocalDate disabledAtDate, String Zone ) {
         super();
         this.strID = strID;
         this.strName = strName;
@@ -37,6 +39,7 @@ public class TblRestaurant implements Serializable {
         this.strDirection = strDirection;
         this.CreatedAtDate = createdAtDate;
         this.DisabledAtDate = disabledAtDate;
+        this.Zone = Zone;
     }
 
     public TblRestaurant() {
@@ -151,6 +154,15 @@ public class TblRestaurant implements Serializable {
         this.DisabledAtDate = disabledAtDate;
     }
     
+    public String getZone() {
+        
+        return Zone;
+    }
+
     
+    public void setZone( String zone ) {
+        
+        Zone = zone;
+    }
     
 }
