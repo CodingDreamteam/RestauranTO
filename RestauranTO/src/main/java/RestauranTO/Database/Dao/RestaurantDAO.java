@@ -24,19 +24,22 @@ public class RestaurantDAO {
                 
                 Statement statement = dbConnection.getDatabaseConnection().createStatement();
                 
-                String strSQL = "SELECT * FROM tblrestaurant WHERE Name like %strName%";
+                String strSQL = "SELECT * FROM tblrestaurant WHERE Name like '%" + strName +"%'";
                 
                 ResultSet resultSet = statement.executeQuery( strSQL );
                 
                 while ( resultSet.next() ) {
                     
-                   TblRestaurant tblRestaurant = new TblRestaurant();                
-                   tblRestaurant.setStrName( resultSet.getString("strName"));
-                   tblRestaurant.setStrDescription( resultSet.getString("strDescription"));
-                   tblRestaurant.setStrDirection( resultSet.getString("strDirection") );
-                   tblRestaurant.setStrEmail(resultSet.getString( "strEmail" ) );
-                   tblRestaurant.setStrPicture( resultSet.getString( "strPicture" ) );
-                 
+                   TblRestaurant tblRestaurant = new TblRestaurant();  
+                   tblRestaurant.setStrID( resultSet.getString( "ID" ) );
+                   tblRestaurant.setStrName( resultSet.getString("Name"));
+                   tblRestaurant.setStrDescription( resultSet.getString("Description"));
+                   tblRestaurant.setStrDirection( resultSet.getString("Direction") );
+                   tblRestaurant.setStrEmail(resultSet.getString( "Email" ) );
+                   tblRestaurant.setStrPicture( resultSet.getString( "Picture" ) );
+                   tblRestaurant.setIntCapacity( resultSet.getInt( "Capacity" ) );
+                   tblRestaurant.setInActualCapacity( resultSet.getInt( "ActualCapacity" ) );
+                   
                    result.add( tblRestaurant );
                    
                 }
@@ -57,6 +60,54 @@ public class RestaurantDAO {
         return result;
     
     }
+ 
+ public static List<TblRestaurant> SearchRestaurantsZones ( final CDatabaseConnection dbConnection, String strZone ) {
+     
+     List<TblRestaurant> result = new ArrayList<TblRestaurant>();
+     
+     try {
+         
+         if ( dbConnection != null && dbConnection.getDatabaseConnection() != null ) {
+             
+             Statement statement = dbConnection.getDatabaseConnection().createStatement();
+             
+             String strSQL = "SELECT * FROM tblrestaurant JOIN tbllocation ON tblrestaurant.Location_ID = tbllocation.ID WHERE tbllocation.Name LIKE '%" + strZone + "%';";
+             
+             ResultSet resultSet = statement.executeQuery( strSQL );
+             
+             while ( resultSet.next() ) {
+                 
+                TblRestaurant tblRestaurant = new TblRestaurant();  
+                tblRestaurant.setStrID( resultSet.getString( "tblrestaurant.ID" ) );
+                tblRestaurant.setStrName( resultSet.getString("tblrestaurant.Name"));
+                tblRestaurant.setStrDescription( resultSet.getString("tblrestaurant.Description"));
+                tblRestaurant.setStrDirection( resultSet.getString("tblrestaurant.Direction") );
+                tblRestaurant.setStrEmail(resultSet.getString( "tblrestaurant.Email" ) );
+                tblRestaurant.setStrPicture( resultSet.getString( "tblrestaurant.Picture" ) );
+                tblRestaurant.setIntCapacity( resultSet.getInt( "tblrestaurant.Capacity" ) );
+                tblRestaurant.setInActualCapacity( resultSet.getInt( "tblrestaurant.ActualCapacity" ) );
+                tblRestaurant.setZone( resultSet.getString( "tbllocation.Name" ) );
+                
+                result.add( tblRestaurant );
+                
+             }
+             
+             resultSet.close();
+             
+             statement.close();
+             
+         }
+         
+     }
+     catch (Exception ex) {
+         
+       ex.printStackTrace();  
+                     
+     }
+     
+     return result;
+ 
+ } 
  
     public static boolean AddSugestion( final CDatabaseConnection dbConnection, TblSugestions tblSugestions) {
      

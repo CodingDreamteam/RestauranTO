@@ -20,6 +20,8 @@ public class TblRestaurant implements Serializable {
     
     protected int intCapacity;
     
+    protected int inActualCapacity;
+    
     protected String strDirection;
     
     protected LocalDate CreatedAtDate;
@@ -28,7 +30,7 @@ public class TblRestaurant implements Serializable {
     
     protected String Zone;
 
-    public TblRestaurant( String strID, String strName, String strDescription, String strEmail, String strPicture, int intCapacity, String strDirection, LocalDate createdAtDate, LocalDate disabledAtDate, String Zone ) {
+    public TblRestaurant( String strID, String strName, String strDescription, String strEmail, String strPicture, int intCapacity, int inActualCapacity, String strDirection, LocalDate createdAtDate, LocalDate disabledAtDate, String Zone ) {
         super();
         this.strID = strID;
         this.strName = strName;
@@ -36,6 +38,7 @@ public class TblRestaurant implements Serializable {
         this.strEmail = strEmail;
         this.strPicture = strPicture;
         this.intCapacity = intCapacity;
+        this.inActualCapacity =  inActualCapacity;
         this.strDirection = strDirection;
         this.CreatedAtDate = createdAtDate;
         this.DisabledAtDate = disabledAtDate;
@@ -116,6 +119,18 @@ public class TblRestaurant implements Serializable {
     public void setIntCapacity( int intCapacity ) {
         
         this.intCapacity = intCapacity;
+    }
+
+    
+    public int getInActualCapacity() {
+        
+        return inActualCapacity;
+    }
+
+    
+    public void setInActualCapacity( int inActualCapacity ) {
+        
+        this.inActualCapacity = inActualCapacity;
     }
 
     
