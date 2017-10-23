@@ -20,7 +20,7 @@ public class UserDAO {
                 
                 Statement statement = dbConnection.getDatabaseConnection().createStatement();
                 
-                ResultSet resultSet = statement.executeQuery( "SELECT * FROM tblOperator WHERE Name = '" + strName + "' AND DisabledAtDate <=> null AND DisabledAtTime <=> null" );
+                ResultSet resultSet = statement.executeQuery( "SELECT * FROM tblUser WHERE Name = '" + strName + "' AND DisabledAtDate <=> null AND DisabledAtTime <=> null" );
                 
                 if ( resultSet.next() ) {
                     
