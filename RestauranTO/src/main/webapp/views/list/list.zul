@@ -21,7 +21,10 @@
           <listheader label="Picture" width="19%"></listheader>
         </listhead>
       </listbox>   
-      
+      <div id="buttoncontainerZoneSelector">
+        <button id="buttonShowAll" label="mostrar todos los restaurantes" style=""></button>
+        <button id="buttonZoneSearch" label="busqueda por zonas"></button>
+      </div>      
     </center>
     
     <south id="southContent" height="50px" border="none">

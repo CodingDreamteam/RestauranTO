@@ -1,5 +1,6 @@
 package RestauranTO.controller.header;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,7 @@ import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.Listbox;
+import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
@@ -109,6 +111,21 @@ public class CHeaderController extends SelectorComposer<Component> {
             
             
         }
+        
+        @Listen( "onClick=#labelsugestion" )
+        public void onClicklabelsugestion( Event event ) {
+            
+            Map<String, Object> arg = new HashMap<String, Object>();
+            
+            arg.put( "labelsugestion", labelsugestion );
+                       
+            Window win = ( Window ) Executions.createComponents( "/views/sugestions/sugestions.zul", null, arg );
+            
+            win.doModal();    
+            
+            
+        }
+        
         @Listen( "onClick=#labellogin" )
         public void onClicklabellogin( Event event ) {
             
@@ -124,26 +141,39 @@ public class CHeaderController extends SelectorComposer<Component> {
         }
     
         @Listen( "onClick=#buttonSearch" )
-        public void onClickbuttonSearch( Event event ) {
-         
-            if ( search.getValue().isEmpty() == false ) {  
-                
-                strSearch = search.getValue();
-                if ( sesion.getAttribute( SystemConstants._DB_Connection_Session_Key ) instanceof CDatabaseConnection ) {
-                    
-                    CDatabaseConnection dbConnection = ( CDatabaseConnection ) sesion.getAttribute( SystemConstants._DB_Connection_Session_Key );
-                
-                    List<TblRestaurant> listData = RestaurantDAO.SearchRestaurants( dbConnection, strSearch );
-                    
-                    Session currentSession = Sessions.getCurrent();
-                    
-                    currentSession.setAttribute("RestaurantList", listData );
-                    
-                    Executions.sendRedirect( "/views/list/list.zul" ); 
-                    
-                    
-             }
-            
-        }
+        public void onClickButtonSearch( Event event ) {
+
+           if ( search.getValue().isEmpty() ) {
+               
+               Messagebox.show( "Debe incluir un valor de busqueda" );
+               
+           }
+           else {
+               
+               Session currentSession = Sessions.getCurrent();
+               
+               CDatabaseConnection databaseConnection = new CDatabaseConnection();
+               
+               CDatabaseConnectionConfig databaseConnectionConfig = new CDatabaseConnectionConfig();
+                           
+               String strRunningPath = Sessions.getCurrent().getWebApp().getRealPath( SystemConstants._Web_Inf_Dir ) + File.separator;
+               
+               if ( databaseConnectionConfig.loadConfig( strRunningPath + SystemConstants._Config_Dir + SystemConstants._Database_Config_File ) ) {
+                   
+                   if ( databaseConnection.makeConnectionToDatabase( databaseConnectionConfig ) ) {
+               
+                     currentSession.setAttribute( "listboxRestaurant", RestaurantDAO.SearchRestaurants( databaseConnection, search.getValue() ));
+               
+                   }
+                   
+               }    
+               
+               Executions.sendRedirect( "/views/list/list.zul" ); //lugar donde llevara al listbox
+               
+               
+               
+           }
+                      
+        }    
 }
-}
+
