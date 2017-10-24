@@ -109,6 +109,21 @@ public class CHeaderController extends SelectorComposer<Component> {
             
             
         }
+        
+        @Listen( "onClick=#labelsugestion" )
+        public void onClicklabelsugestion( Event event ) {
+            
+            Map<String, Object> arg = new HashMap<String, Object>();
+            
+            arg.put( "labelsugestion", labelsugestion );
+                       
+            Window win = ( Window ) Executions.createComponents( "/views/sugestions/sugestions.zul", null, arg );
+            
+            win.doModal();    
+            
+            
+        }
+        
         @Listen( "onClick=#labellogin" )
         public void onClicklabellogin( Event event ) {
             

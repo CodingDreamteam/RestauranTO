@@ -1,12 +1,12 @@
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
 <zk>
   <div hflex="1" vflex="1" apply="RestauranTO.controller.header.CHeaderController" sclass="banner" style="background-color:green;color: white; padding: 5px 10px;">
+     <label id="labeluser" value="" style="float:right;margin-right:25px;margin-top:3px;font-size:175%;color:gray;" />
     <hbox hflex="1" vflex="1" align="center">
-      <label id="labeluser" value="" />
-        <image src="/resources/RestauranTO.jpg" width="135px" style="float:left;margin-up:100px;cursor:hand;cursor:pointer" />
+      <image src="/resources/RestauranTO.jpg" width="135px" style="float:left;cursor:hand;cursor:pointer" /> 
       <div width="700%" height="10%">
-        <label id="labellogin" value="Login" style="margin-left:140px;margin-up:100%;cursor:hand;cursor:pointer" />
-        <label id="labellogout" value="Logout" visible="false" style="margin-left:140px;margin-up:100px;cursor:hand;cursor:pointer" />
+        <label id="labellogin" value="Login" style="margin-left:140px;cursor:hand;cursor:pointer" />
+        <label id="labellogout" value="Logout" visible="false" style="margin-left:140px;cursor:hand;cursor:pointer" />
         <label id="labelL" value="|" style="margin-left:10px;" />
         <label id="labelsugestion" value="sugestion" visible="false" style="margin-left:10px;cursor:hand;cursor:pointer" />
         <label id="labelregister" value="Registrarse" style="margin-left:10px;cursor:hand;cursor:pointer" />
