@@ -181,6 +181,7 @@ public class CRegisterController extends SelectorComposer<Component> {
                  }
                  
                  databaseConnection.closeConnectionToDB();
+                 windowRegister.detach(); 
                  
              }             
              

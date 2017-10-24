@@ -29,7 +29,7 @@ import RestauranTO.Database.Datamodel.TblUser;
 public class CLoginController extends SelectorComposer<Component> {
 
     @Wire
-    Textbox textboxOperator;
+    Textbox textboxUser;
     
     @Wire
     Textbox textboxPassword;
@@ -74,11 +74,11 @@ public class CLoginController extends SelectorComposer<Component> {
 
         try {
                         
-            final String strOperator = textboxOperator.getValue();
+            final String strOperator = textboxUser.getValue();
             
             final String strPassword = textboxPassword.getValue();
         
-            if ( textboxOperator != null && textboxPassword != null ) {
+            if ( textboxUser != null && textboxPassword != null ) {
             
                 CDatabaseConnection databaseConnection = new CDatabaseConnection();
                 

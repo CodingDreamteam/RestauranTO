@@ -83,7 +83,6 @@ public class CHeaderController extends SelectorComposer<Component> {
                labeluser.setValue( tblUser.getStrName() );
                
             }
-            tblRestaurant = ( TblRestaurant ) sesion.getAttribute( SystemConstants._Operator_Credential_Session_Key );
             
             listboxRestaurantes = ( Listbox ) execution.getArg().get( "listboRestaurantes" );
             

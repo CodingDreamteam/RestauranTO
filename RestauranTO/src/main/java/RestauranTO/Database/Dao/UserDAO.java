@@ -20,7 +20,7 @@ public class UserDAO {
                 
                 Statement statement = dbConnection.getDatabaseConnection().createStatement();
                 
-                ResultSet resultSet = statement.executeQuery( "SELECT * FROM tblUser WHERE Name = '" + strName + "' AND DisabledAtDate <=> null AND DisabledAtTime <=> null" );
+                ResultSet resultSet = statement.executeQuery( "SELECT * FROM tblUser WHERE Name = '" + strName + "' AND DisabledAtDate <=> null" );
                 
                 if ( resultSet.next() ) {
                     
@@ -47,19 +47,13 @@ public class UserDAO {
                         result.setStrPicture( resultSet.getString( "Picture" ) );
                         result.setStrPassword( resultSet.getString( "Password" ) );
                         result.setCreatedAtDate( resultSet.getDate( "CreatedAtDate" ).toLocalDate() );
+                        result.setStrRole( resultSet.getString( "Role" ) );
                         result.setDisabledAtDate( resultSet.getDate( "DisabledAtDate" ) != null ? resultSet.getDate( "DisabledAtDate" ).toLocalDate() : null );
                      
                     }
                     
                 }
                 
-                resultSet = statement.executeQuery( "SELECT Name FROM tblGroup WHERE Id IN (SELECT GroupId FROM tblOperator WHERE Name = '" + result.getStrName() + "')" );
-                
-                if ( resultSet.next() ) {
-                    
-                    result.setStrRole( resultSet.getString( "Name" ) );
-                    
-                }
                 
                 resultSet.close();
                 
