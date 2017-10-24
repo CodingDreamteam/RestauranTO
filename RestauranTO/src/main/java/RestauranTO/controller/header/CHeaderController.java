@@ -41,7 +41,8 @@ public class CHeaderController extends SelectorComposer<Component> {
     
     protected 
     
-    
+    @Wire
+    Label IRestauranTO;
     @Wire
     Label labelregister;
     @Wire
@@ -56,6 +57,7 @@ public class CHeaderController extends SelectorComposer<Component> {
     Textbox search;    
     @Wire
     Button buttonSearch;
+    
     
     protected TblUser tblUser = null;
     
@@ -95,6 +97,12 @@ public class CHeaderController extends SelectorComposer<Component> {
             }
             
         }
+    @Listen( "onClick=#IRestauranTO" )
+    public void onClickIRestauranTO( Event event ) { 
+        
+        Executions.sendRedirect( "/index.zul" ); 
+        
+    }
         
         @Listen( "onClick=#labelregister" )
         public void onClicklabelregister( Event event ) {
@@ -142,7 +150,7 @@ public class CHeaderController extends SelectorComposer<Component> {
         @Listen( "onClick=#labellogout" )
         public void onClickllabellogout( Event event ) {
                
-            Messagebox.show( "¿estas seguro que deseas deslogearte?", "Logout", Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
+            Messagebox.show( "ï¿½estas seguro que deseas deslogearte?", "Logout", Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
                 
                 public void onEvent( Event evt ) throws InterruptedException {
                     
@@ -161,8 +169,8 @@ public class CHeaderController extends SelectorComposer<Component> {
         }
         
         
-        @Listen( "onClick=#labeladvanced" )
-        public void onClicklabeladvanced( Event event ) {
+        @Listen( "onClick=#buttonAdvanced" )
+        public void onClickButtonAdvanced( Event event ) {
                
                Executions.sendRedirect( "/views/list/list.zul" ); //lugar donde llevara al listbox       
                
