@@ -2,18 +2,7 @@
 <?link rel="stylesheet" type="text/css" href="../../resources/styles/home.style.css"?>
 
 <zk>
-
-  <borderlayout  id="homeLayout" apply="RestauranTO.controller.login.CLoginController" vflex="1">
-
-    <north id="northContent" height="100px" border="none" >
-        
-      <include id="includeNorthContent" src="/views/header/header.zul"/>
-            
-    </north>
-    
-    <center id="mainContent" autoscroll="true" border="none">
-      
-     <window id="windowLogin" apply="" title="Logeate con tu nombre de usuario y contraseña" border="normal" position="center" mode="overlapped" hflex="min">
+     <window id="windowLogin" apply="RestauranTO.controller.login.CLoginController" title="Logeate con tu nombre de usuario y contraseña" border="normal" position="center" mode="overlapped" hflex="min" closable = "true">
         <vbox hflex="min" align="center">
             <grid sclass="gridLayoutNoBorder" hflex="min">
                 <columns>
@@ -38,14 +27,4 @@
         </vbox>
         <timer id="timerKeepAliveSession" repeats="true" delay="120000" />
       </window>
-    </center>
-    
-    <south id="southContent" height="50px" border="none">
-        
-      <include id="includeSouthContent" src="/views/footer/footer.zul"/>
-        
-    </south>
-        
-  </borderlayout>
-
 </zk>

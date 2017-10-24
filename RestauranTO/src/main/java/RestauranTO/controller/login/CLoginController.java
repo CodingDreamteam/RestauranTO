@@ -52,7 +52,6 @@ public class CLoginController extends SelectorComposer<Component> {
         try {
          
             super.doAfterCompose( comp );
-            
            
         }
         catch ( Exception ex ) {
@@ -70,7 +69,7 @@ public class CLoginController extends SelectorComposer<Component> {
         labelMessage.setValue( "" ); 
     }    
     
-    @Listen( "onClick=#buttonLogin; onOK=#windowLogin" )
+    @Listen( "onClick=#buttonLogin;" )
     public void onClickButtonLogin( Event event ) {
 
         try {

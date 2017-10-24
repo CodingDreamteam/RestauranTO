@@ -110,6 +110,19 @@ public class CHeaderController extends SelectorComposer<Component> {
             
             
         }
+        @Listen( "onClick=#labellogin" )
+        public void onClicklabellogin( Event event ) {
+            
+            Map<String, Object> arg = new HashMap<String, Object>();
+            
+            arg.put( "labellogin", labellogin );
+                       
+            Window win = ( Window ) Executions.createComponents( "/views/login/login.zul", null, arg );
+            
+            win.doModal();    
+            
+            
+        }
     
         @Listen( "onClick=#buttonSearch" )
         public void onClickbuttonSearch( Event event ) {
