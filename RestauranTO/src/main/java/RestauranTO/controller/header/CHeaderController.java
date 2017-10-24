@@ -58,6 +58,7 @@ public class CHeaderController extends SelectorComposer<Component> {
     @Wire
     Button buttonSearch;
     
+    
     protected TblUser tblUser = null;
     
     protected Session sesion = Sessions.getCurrent();

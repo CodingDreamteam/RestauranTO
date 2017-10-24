@@ -1,7 +1,7 @@
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
 <zk>
   <div hflex="1" vflex="1" apply="RestauranTO.controller.header.CHeaderController" sclass="banner" style="background-color:green;color: white; padding: 1% 2%;">
-     <label id="labeluser" value="" style="float:right;margin-right:5%;margin-top:1%;font-size:175%;" />
+     <label id="labeluser" value="" style="float:right;margin-right:21%;font-size:150%;" />
     <hbox hflex="1" vflex="1" align="center">
       <image id="IRestauranTO" src="/resources/RestauranTO.jpg" width="40%" style="float:left;cursor:hand;cursor:pointer" /> 
       <div width="700%" height="60%">
