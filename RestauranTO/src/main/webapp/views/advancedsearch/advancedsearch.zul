@@ -9,7 +9,7 @@
         <textbox class="textbox search" id="search" height="30%" width="20%" style="float:left;margin-left:10px;background:white;" />
         <button id="buttonSearch" label="buscar" height="2%" width="2%" style="float:left;" />
       </div>
-        <label id="labelIntro" value="Bienvenidos a RestauranTO sitio web donde se pueden encontrar todos los restaurantes en la capital de Nueva Esparta"/>
+        
     </vbox>
   </div>
 </zk>

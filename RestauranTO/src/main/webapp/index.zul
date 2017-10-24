@@ -1,28 +1,20 @@
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
 <?link rel="stylesheet" type="text/css" href="../../resources/styles/home.style.css"?>
-
 <zk>
-
-  <borderlayout  id="homeLayout" apply="" vflex="1">
-
-    <north id="northContent" height="100px" border="none" >
-        
-      <include id="includeNorthContent" src="/views/header/header.zul"/>
-            
+  <borderlayout id="homeLayout" width="100%" apply="" vflex="1">
+    <north id="northContent" height="15%" border="none">
+      <include id="includeNorthContent" src="/views/header/header.zul" />
     </north>
-    
     <center id="mainContent" autoscroll="true" border="none">
-   
-    
-      
+      <div>
+        <image src="/resources/LaAsuncion.jpg" width="100%" height="100%" />
+        <label id="labelIntro" value="Bienvenidos a RestauranTO sitio web donde se pueden encontrar todos los restaurantes en la capital de Nueva Esparta
+  En RestauranTO podrás buscar restaurantes cercanos a ti, leer comentarios de otros usuarios sobre los restaurantes, observar la calificación e incluso dar tu propia opinión
+  También podrás reservar para esa cita especial con tus seres queridos observando el restaurante que más satisfaga sus estándares o gustos." style="color:white;margin-left:5%;font-size:225%;position:absolute;right:5%;top:20%" />
+      </div>
     </center>
-    
-    <south id="southContent" height="50px" border="none">
-        
-      <include id="includeSouthContent" src="/views/footer/footer.zul"/>
-        
+    <south id="southContent" height="7%" border="none">
+      <include id="includeSouthContent" src="/views/footer/footer.zul" />
     </south>
-        
   </borderlayout>
-
 </zk>
