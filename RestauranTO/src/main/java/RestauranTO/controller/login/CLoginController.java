@@ -110,10 +110,6 @@ public class CLoginController extends SelectorComposer<Component> {
                            // currentSession.setAttribute( SystemConstants._Log_Path_Session_Key, strLogPath );
 
                             //currentSession.setAttribute( SystemConstants._Login_Date_Time_Session_Key, strDateTime );
-                                                                             
-                            List<String> loggedSessionLoggers = new LinkedList<String>();
-                                                        
-                            currentSession.setAttribute( SystemConstants._Logged_Session_Loggers, loggedSessionLoggers );
                                                                                                                 
                             Executions.sendRedirect( "/index.zul" ); 
                             
