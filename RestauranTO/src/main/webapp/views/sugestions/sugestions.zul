@@ -1,6 +1,6 @@
 <?page title="Sugestions" contentType="text/html; charset=UTF-8"?>
 <zk>
-    <window id="windowSugestions" xmlns:w="client" apply="RestauranTO.controller.sugestions.CSugestionsController" title="" border="normal" hflex="min" Style="background:#CECECE;" closable="true">        
+    <window id="windowSugestions" title ="Caja de Sugerencias" xmlns:w="client" apply="RestauranTO.controller.sugestions.CSugestionsController" border="normal" hflex="min" Style="background:#CECECE;" closable="true">        
         <vlayout width="400px">
             <grid hflex="min">
                 <rows>
