@@ -1,8 +1,8 @@
 <?page title="Zone Selector" contentType="text/html;charset=UTF-8"?>
 <zk>
-   <window id="windowZoneSelector" xmlns:w="client" position="center, center" title="Seleccione la Zona" apply="" border="normal" hflex="min" width="360px" Style="background:#CECECE;" closable = "true">
+   <window id="windowZoneSelector" xmlns:w="client" position="center, center" title="Seleccione la Zona" apply="RestauranTO.controller.Zone.CZoneController" border="normal" hflex="min" width="360px" Style="background:#CECECE;" closable = "true">
        <vlayout width="710px">
-            <listbox id="listboxGroupContact"  width="100%" height="360px">
+            <listbox id="listboxZone"  width="100%" height="360px">
             <listhead width="100%" height="100%">
             <listheader label="nombre de la zona" width="50%%"></listheader>      
             </listhead>

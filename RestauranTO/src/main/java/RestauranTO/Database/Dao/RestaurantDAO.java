@@ -9,6 +9,7 @@ import java.util.UUID;
 import RestauranTO.Database.CDatabaseConnection;
 import RestauranTO.Database.Datamodel.TblRestaurant;
 import RestauranTO.Database.Datamodel.TblSugestions;
+import RestauranTO.Database.Datamodel.TblZone;
 
 
 
@@ -61,7 +62,55 @@ public class RestaurantDAO {
     
     }
  
- public static List<TblRestaurant> SearchRestaurantsZones ( final CDatabaseConnection dbConnection, String strZone ) {
+ 
+   public static List<TblRestaurant> SearchAllRestaurants ( final CDatabaseConnection dbConnection ) {
+     
+     List<TblRestaurant> result = new ArrayList<TblRestaurant>();
+     
+     try {
+         
+         if ( dbConnection != null && dbConnection.getDatabaseConnection() != null ) {
+             
+             Statement statement = dbConnection.getDatabaseConnection().createStatement();
+             
+             String strSQL = "SELECT * FROM tblrestaurant";
+             
+             ResultSet resultSet = statement.executeQuery( strSQL );
+             
+             while ( resultSet.next() ) {
+                 
+                TblRestaurant tblRestaurant = new TblRestaurant();  
+                tblRestaurant.setStrID( resultSet.getString( "ID" ) );
+                tblRestaurant.setStrName( resultSet.getString("Name"));
+                tblRestaurant.setStrDescription( resultSet.getString("Description"));
+                tblRestaurant.setStrDirection( resultSet.getString("Direction") );
+                tblRestaurant.setStrEmail(resultSet.getString( "Email" ) );
+                tblRestaurant.setStrPicture( resultSet.getString( "Picture" ) );
+                tblRestaurant.setIntCapacity( resultSet.getInt( "Capacity" ) );
+                tblRestaurant.setInActualCapacity( resultSet.getInt( "ActualCapacity" ) );
+                
+                result.add( tblRestaurant );
+                
+             }
+             
+             resultSet.close();
+             
+             statement.close();
+             
+         }
+         
+     }
+     catch (Exception ex) {
+         
+       ex.printStackTrace();  
+                     
+     }
+     
+     return result;
+ 
+ }  
+ 
+  public static List<TblRestaurant> SearchRestaurantsZones ( final CDatabaseConnection dbConnection, String strZone ) {
      
      List<TblRestaurant> result = new ArrayList<TblRestaurant>();
      
@@ -107,8 +156,49 @@ public class RestaurantDAO {
      
      return result;
  
- } 
- 
+    } 
+      
+  public static List<TblZone> SearchAllZones ( final CDatabaseConnection dbConnection ) {
+      
+      List<TblZone> result = new ArrayList<TblZone>();
+      
+      try {
+          
+          if ( dbConnection != null && dbConnection.getDatabaseConnection() != null ) {
+              
+              Statement statement = dbConnection.getDatabaseConnection().createStatement();
+              
+              String strSQL = "SELECT * FROM tbllocation";
+              
+              ResultSet resultSet = statement.executeQuery( strSQL );
+              
+              while ( resultSet.next() ) {
+                  
+                 TblZone tblZone = new TblZone();  
+                 tblZone.setStrID( resultSet.getString( "ID" ) );
+                 tblZone.setStrName( resultSet.getString("Name"));      
+                 
+                 result.add( tblZone );
+                 
+              }
+              
+              resultSet.close();
+              
+              statement.close();
+              
+          }
+          
+      }
+      catch (Exception ex) {
+          
+        ex.printStackTrace();  
+                      
+      }
+      
+      return result;
+  
+  }    
+  
     public static boolean AddSugestion( final CDatabaseConnection dbConnection, TblSugestions tblSugestions) {
      
      boolean result = false;

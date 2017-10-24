@@ -170,7 +170,7 @@ public class CHeaderController extends SelectorComposer<Component> {
                
                Executions.sendRedirect( "/views/list/list.zul" ); //lugar donde llevara al listbox
                
-               
+               databaseConnection.closeConnectionToDB();
                
            }
                       

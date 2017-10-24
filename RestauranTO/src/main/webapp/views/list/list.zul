@@ -10,21 +10,10 @@
             
     </north>
     
-    <center id="mainContent" autoscroll="true" border="none">
+    <center id="mainContent"  autoscroll="true" border="none">
    
-      <listbox id="listboxRestaurantes">
-       <listhead width="100%" height="100%">
-          <listheader label="Name" width="19%"></listheader>
-          <listheader label="Description" width="19%"></listheader>
-          <listheader label="Direction" width="19%"></listheader>
-          <listheader label="Email" width="19%"></listheader>
-          <listheader label="Picture" width="19%"></listheader>
-        </listhead>
-      </listbox>   
-      <div id="buttoncontainerZoneSelector">
-        <button id="buttonShowAll" label="mostrar todos los restaurantes" style=""></button>
-        <button id="buttonZoneSearch" label="busqueda por zonas"></button>
-      </div>      
+      <include id="includeCenter" src="/views/restaurantlist/restaurantlist.zul"/>
+     
     </center>
     
     <south id="southContent" height="50px" border="none">

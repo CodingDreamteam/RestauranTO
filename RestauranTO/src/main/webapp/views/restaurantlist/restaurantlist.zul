@@ -1,0 +1,16 @@
+<?page title="Restaurantlist" contentType="text/html;charset=UTF-8"?>
+<zk>
+  <window id="Restaurantlist" xmlns:w="client" position="center, center" apply="RestauranTO.controller.list.CListController" border="normal" hflex="min" width="100%" height="100%" Style="background:#CECECE;">
+      <listbox id="listboxRestaurantes"  width="100%" height="90%" >
+       <listhead width="100%" height="100%">
+          <listheader label="Name" width="19%"></listheader>
+          <listheader label="Description" width="19%"></listheader>
+          <listheader label="Direction" width="19%"></listheader>
+        </listhead>
+      </listbox>   
+      <div id="buttoncontainerZoneSelector" >
+        <button id="buttonShowAll" label="mostrar todos los restaurantes" style=""></button>
+        <button id="buttonZoneSearch" label="busqueda por zonas" ></button>
+      </div>   
+  </window>  
+</zk>
