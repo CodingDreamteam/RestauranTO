@@ -1,0 +1,48 @@
+<?page title="Contact Editor" contentType="text/html; charset=UTF-8"?>
+<zk>
+    <window id="windowRestaurantSelector" xmlns:w="client" apply="" title="Informacion del restaurante" border="normal" hflex="min" Style="background:#CECECE;" closable="true">
+        <vlayout width="370px">
+            <grid hflex="min">
+                <rows>
+                    <row>
+                        <label value="Nombre" width="150px" style="font-size:11pt;font-style:italic" />
+                        <label id="labelName" value="" width="150px" style="font-size:11pt;font-style:italic" />
+                    </row>
+                                       
+                    <row>
+                        <label  value="Direccion:"  width="150px" style="font-size:11pt;font-style:italic" />
+                        
+                        <label id="labelDirection" value=""  width="150px" style="font-size:11pt;font-style:italic" />
+                                          
+                    </row>
+                    
+                   <row>
+                        <label  value="Descripcion"  width="150px" style="font-size:11pt;font-style:italic" />
+                        
+                        <label id="labelDescription" value=""  width="150px" style="font-size:11pt;font-style:italic" />
+                   </row>
+                   
+                   <row>
+                        <label  value="Email"  width="150px" style="font-size:11pt;font-style:italic" />
+                        
+                        <label id="labelEmail" value=""  width="150px" style="font-size:11pt;font-style:italic" />
+                   </row>
+                   
+                   <row>
+                        <label  value="Zona"  width="150px" style="font-size:11pt;font-style:italic" />
+                        
+                        <label id="labelZona" value=""  width="150px" style="font-size:11pt;font-style:italic" />
+                   </row>                    
+                </rows>
+                
+            </grid>
+            <div id="buttoncontainer">
+            
+                <button id="buttonAddRating" label="Añadir Rating" style="color:#ffffff;background:#355fbf;font-size:10pt;font-style:italic;float:right;margin-left:15px"></button>
+                
+                <button id="buttonRatingList" label="Ver lista de Ratings" style="color:#ffffff;background:#355fbf;font-size:10pt;font-style:italic;float:right;margin-left:15px"></button>
+                
+            </div>
+        </vlayout>
+    </window>
+</zk>   

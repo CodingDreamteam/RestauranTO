@@ -2,7 +2,6 @@ package RestauranTO.controller.header;
 
 import java.io.File;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.zkoss.zk.ui.Component;
@@ -11,7 +10,6 @@ import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.event.Event;
-import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
@@ -139,7 +137,40 @@ public class CHeaderController extends SelectorComposer<Component> {
             
             
         }
-    
+        
+        @SuppressWarnings( { "unchecked", "rawtypes" } )
+        @Listen( "onClick=#labellogout" )
+        public void onClickllabellogout( Event event ) {
+               
+            Messagebox.show( "¿estas seguro que deseas deslogearte?", "Logout", Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
+                
+                public void onEvent( Event evt ) throws InterruptedException {
+                    
+                    if ( evt.getName().equals( "onOK" ) ) {
+                        
+                        Sessions.getCurrent().invalidate();
+                        
+                        Executions.sendRedirect( "/index.zul" );
+                        
+                    }
+                    
+                }
+                
+            } );     
+               
+        }
+        
+        
+        @Listen( "onClick=#labeladvanced" )
+        public void onClicklabeladvanced( Event event ) {
+               
+               Executions.sendRedirect( "/views/list/list.zul" ); //lugar donde llevara al listbox       
+               
+        }
+                      
+          
+        
+        
         @Listen( "onClick=#buttonSearch" )
         public void onClickButtonSearch( Event event ) {
 

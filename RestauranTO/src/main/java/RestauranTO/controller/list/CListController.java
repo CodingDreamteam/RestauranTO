@@ -11,9 +11,11 @@ import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zul.Button;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Listcell;
@@ -36,7 +38,9 @@ import RestauranTO.Database.Datamodel.TblZone;
     
     @Wire
     Listbox listboxRestaurantes;
-   
+    @Wire
+    Button buttonShowAll;
+    
     protected TblUser tblUser = null;
     
     protected Session sesion = Sessions.getCurrent();
@@ -89,6 +93,11 @@ import RestauranTO.Database.Datamodel.TblZone;
          
          listboxRestaurantes.setItemRenderer( ( new MyRenderer() ) );
          
+         }
+         else {
+             
+             Events.echoEvent("onClick", buttonShowAll, null );  
+             
          }
          
      }
