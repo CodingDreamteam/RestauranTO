@@ -14,8 +14,58 @@ import RestauranTO.Database.Datamodel.TblZone;
 
 
 public class RestaurantDAO {
+ 
+    public static TblRestaurant SearchOneRestaurant ( final CDatabaseConnection dbConnection, String strID ) {
+        
+        TblRestaurant result = new TblRestaurant();
+        
+        try {
+            
+            if ( dbConnection != null && dbConnection.getDatabaseConnection() != null ) {
+                
+                Statement statement = dbConnection.getDatabaseConnection().createStatement();
+                
+                String strSQL = "SELECT * FROM tblrestaurant JOIN tbllocation ON tblrestaurant.Location_ID = tbllocation.ID  WHERE tblrestaurant.ID = '" + strID +"'";
+                
+                ResultSet resultSet = statement.executeQuery( strSQL );
+                
+                if ( resultSet.next() ) {
+                                        
+                   result.setStrID( resultSet.getString( "tblrestaurant.ID" ) );
+                   result.setStrName( resultSet.getString("tblrestaurant.Name"));
+                   result.setStrDescription( resultSet.getString("tblrestaurant.Description"));
+                   result.setStrDirection( resultSet.getString("tblrestaurant.Direction") );
+                   result.setStrEmail(resultSet.getString( "tblrestaurant.Email" ) );
+                   result.setStrPicture( resultSet.getString( "tblrestaurant.Picture" ) );
+                   result.setIntCapacity( resultSet.getInt( "tblrestaurant.Capacity" ) );
+                   result.setInActualCapacity( resultSet.getInt( "tblrestaurant.ActualCapacity" ) );
+                   result.setZone( resultSet.getString( "tbllocation.Name" ) );
+                   
+                   
+                }
+                
+                resultSet.close();
+                
+                statement.close();
+                
+            }
+            
+        }
+        catch (Exception ex) {
+            
+          ex.printStackTrace();  
+                        
+        }
+        
+        return result;
     
- public static List<TblRestaurant> SearchRestaurants ( final CDatabaseConnection dbConnection, String strName ) {
+    }  
+    
+    
+    
+    
+    
+   public static List<TblRestaurant> SearchRestaurants ( final CDatabaseConnection dbConnection, String strName ) {
         
         List<TblRestaurant> result = new ArrayList<TblRestaurant>();
         
@@ -61,7 +111,8 @@ public class RestaurantDAO {
         return result;
     
     }
- 
+     
+     
  
    public static List<TblRestaurant> SearchAllRestaurants ( final CDatabaseConnection dbConnection ) {
      

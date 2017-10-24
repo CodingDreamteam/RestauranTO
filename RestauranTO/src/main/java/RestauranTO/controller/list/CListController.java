@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Execution;
@@ -76,7 +77,34 @@ import RestauranTO.Database.Datamodel.TblZone;
 
         
     }
- 
+    
+    @Listen( "onSelect=#listboxZone" )
+    public void onSelect ( Event event ) {
+        
+        Set<TblRestaurant> selecteditems = datamodelRestaurant.getSelection(); 
+        
+        if ( listboxRestaurantes.getSelectedIndex() >= 0 ) {
+            
+            if (  selecteditems != null  &&  datamodelRestaurant.getSelection().size() > 0 ) {
+                        
+                TblRestaurant tblRestaurant = selecteditems.iterator().next();
+                 
+                Map<String, Object> arg = new HashMap<String, Object>();
+                
+                arg.put("tblRestaurant", tblRestaurant);
+                        
+                Window win = ( Window ) Executions.createComponents( "/views/restaurantinfo/restaurantinfo.zul", null, arg );
+                
+                win.doModal();
+                    
+                
+            }
+            
+        } 
+        
+   }
+    
+    
     @SuppressWarnings( "unchecked" )
     public void doAfterCompose( Component comp ) {
      

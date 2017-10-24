@@ -65,7 +65,9 @@ public class CRatingController extends SelectorComposer<Component> {
     
     @Listen( "onClick=#buttonSubmit" )
     public void onClickbuttonSubmit( Event event ) {
-        
+    
+    if ( textboxComment.getValue().isEmpty() == false ) {
+             
        int Rating = 0;     
        
        String Comment = null;
@@ -80,8 +82,9 @@ public class CRatingController extends SelectorComposer<Component> {
         Rating = 4; 
        if ( star5.getSrc() ==  "/resources/yellow star.png" )
         Rating = 5;        
-       if ( textboxComment.getValue().isEmpty() == false ) 
-        Comment = textboxComment.getValue();
+
+
+       Comment = textboxComment.getValue();
        
        CDatabaseConnection dbConnection = ( CDatabaseConnection ) sesion.getAttribute( SystemConstants._DB_Connection_Session_Key );
              
@@ -89,6 +92,12 @@ public class CRatingController extends SelectorComposer<Component> {
        
        Messagebox.show( "Rating enviado" );
        
+     }
+     else {
+         
+         Messagebox.show( "Debe colocar un comentario" );
+     }
+        
     }
     
     @Listen( "onClick=#star1" )

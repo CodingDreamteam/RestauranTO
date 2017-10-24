@@ -1,6 +1,6 @@
-<?page title="Contact Editor" contentType="text/html; charset=UTF-8"?>
+<?page title="Restaurant selector" contentType="text/html; charset=UTF-8"?>
 <zk>
-    <window id="windowRestaurantSelector" xmlns:w="client" apply="" title="Informacion del restaurante" border="normal" hflex="min" Style="background:#CECECE;" closable="true">
+    <window id="windowRestaurantSelector" xmlns:w="client" apply="RestauranTO.controller.Selector.CRestaurantSelectorController" title="Informacion del restaurante" border="normal" hflex="min" Style="background:#CECECE;" closable="true">
         <vlayout width="370px">
             <grid hflex="min">
                 <rows>
@@ -38,7 +38,7 @@
             </grid>
             <div id="buttoncontainer">
             
-                <button id="buttonAddRating" label="Añadir Rating" style="color:#ffffff;background:#355fbf;font-size:10pt;font-style:italic;float:right;margin-left:15px"></button>
+                <button id="buttonAddRating" label="Añadir Rating" visible="false" style="color:#ffffff;background:#355fbf;font-size:10pt;font-style:italic;float:right;margin-left:15px"></button>
                 
                 <button id="buttonRatingList" label="Ver lista de Ratings" style="color:#ffffff;background:#355fbf;font-size:10pt;font-style:italic;float:right;margin-left:15px"></button>
                 

@@ -3,9 +3,13 @@ package RestauranTO.Database.Dao;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import RestauranTO.Database.CDatabaseConnection;
+import RestauranTO.Database.Datamodel.TblRating;
+import RestauranTO.Database.Datamodel.TblRestaurant;
 import RestauranTO.Database.Datamodel.TblUser;
 import RestauranTO.crypt.BCrypt;
 
@@ -112,7 +116,48 @@ public class UserDAO {
         }
         return result;
     }
+   public static List<TblRating> SearchRatings ( final CDatabaseConnection dbConnection, String RestaurantID ) {
+        
+        List<TblRating> result = new ArrayList<TblRating>();
+        
+        try {
+            
+            if ( dbConnection != null && dbConnection.getDatabaseConnection() != null ) {
+                
+                Statement statement = dbConnection.getDatabaseConnection().createStatement();
+                
+                String strSQL = "SELECT * FROM tblratings JOIN tbluser ON tblratings.User_ID = tbluser.ID WHERE tblratings.Restaurant_ID = '" + RestaurantID + "'";
+                
+                ResultSet resultSet = statement.executeQuery( strSQL );
+                
+                while ( resultSet.next() ) {
+                    
+                   TblRating tblRating = new TblRating();  
+                   tblRating.setStrID( resultSet.getString( "tblratings.ID" ) );
+                   tblRating.setStrComment( resultSet.getString("tblratings.Comment"));
+                   tblRating.setIntRating( resultSet.getInt("tblratings.Rating"));
+                   tblRating.setUserName( resultSet.getString( "tbluser.Name" ) );    
+                   
+                   result.add( tblRating );
+                   
+                }
+                
+                resultSet.close();
+                
+                statement.close();
+                
+            }
+            
+        }
+        catch (Exception ex) {
+            
+          ex.printStackTrace();  
+                        
+        }
+        
+        return result;
     
+    }
     public static boolean AddRating( final CDatabaseConnection dbConnection, String Comment, int Rating, String UserID, String RestaurantID) {
         
         boolean result = false;
