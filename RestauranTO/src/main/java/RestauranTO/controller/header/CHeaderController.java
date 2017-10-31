@@ -26,6 +26,7 @@ import RestauranTO.Database.CDatabaseConnectionConfig;
 import RestauranTO.Database.Dao.RestaurantDAO;
 import RestauranTO.Database.Datamodel.TblRestaurant;
 import RestauranTO.Database.Datamodel.TblUser;
+import jsonreader.CJsonReader;
 
 
 
@@ -100,7 +101,9 @@ public class CHeaderController extends SelectorComposer<Component> {
     @Listen( "onClick=#IRestauranTO" )
     public void onClickIRestauranTO( Event event ) { 
         
-        Executions.sendRedirect( "/index.zul" ); 
+    	Messagebox.show( CJsonReader.getStreetName() );
+    	
+        //Executions.sendRedirect( "/index.zul" ); 
         
     }
         
