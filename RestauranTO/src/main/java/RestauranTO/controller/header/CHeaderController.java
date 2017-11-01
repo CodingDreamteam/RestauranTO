@@ -100,10 +100,8 @@ public class CHeaderController extends SelectorComposer<Component> {
         }
     @Listen( "onClick=#IRestauranTO" )
     public void onClickIRestauranTO( Event event ) { 
-        
-    	Messagebox.show( CJsonReader.getStreetName() );
-    	
-        //Executions.sendRedirect( "/index.zul" ); 
+       
+        Executions.sendRedirect( "/index.zul" ); 
         
     }
         

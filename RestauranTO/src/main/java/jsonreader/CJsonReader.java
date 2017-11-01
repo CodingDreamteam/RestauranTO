@@ -6,11 +6,16 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
+
+import RestauranTO.Database.Datamodel.Jsonthing;
 
 public class CJsonReader extends SelectorComposer<Component> {
 
@@ -18,9 +23,11 @@ public class CJsonReader extends SelectorComposer<Component> {
 
 
 
-	public static String getStreetName( ){
+	public static List<Jsonthing> getEmployees( ){
 			// making url request
 			try {
+				List<Jsonthing> result = new ArrayList<Jsonthing>();
+				
 				URL url = new URL("https://connect.squareup.com/v1/me/employees");
 				// making connection
 				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -37,33 +44,47 @@ public class CJsonReader extends SelectorComposer<Component> {
 
 				String output;
 				String out="";
-				System.out.println("Output from Server .... \n");
+				//System.out.println("Output from Server .... \n");
 				while ((output = br.readLine()) != null) {
-					System.out.println(output);
+					//System.out.println(output +"\n");
 					out=out+output;
 				}
+				
 				// Converting Json formatted string into JSON object
 				//JSONObject json = (JSONObject) JSONSerializer.toJSON(out);
 				JSONArray results=(JSONArray) JSONSerializer.toJSON(out);
-				JSONObject rec = results.getJSONObject(0);
-				JSONArray address_components=rec.getJSONArray("ID de personal");
-				for(int i=0;i<address_components.size();i++){
-				JSONObject rec1 = address_components.getJSONObject(i);
-				//trace(rec1.getString("long_name"));
-				JSONArray types=rec1.getJSONArray("types");
-				String comp=types.getString(0);
-
-				if(comp.equals("ID de personal")){
-					System.out.println("city ————-"+rec1.getString("long_name"));
-				}
-				else if(comp.equals("Nombre de personal")){
-					System.out.println("country ———-"+rec1.getString("long_name"));
-				}
-				}
-				String formatted_address = rec.getString("formatted_address");
-				conn.disconnect();
-				return formatted_address;		
+				//JSONObject rec = results.getJSONObject(0);
+				for(int i=0;i<results.size();i++){
+				JSONObject rec1 = results.getJSONObject(i);
 				
+				Jsonthing jsonthing = new Jsonthing();
+				
+				jsonthing.setFirst_name(rec1.getString("first_name") );
+				
+				jsonthing.setLast_name(rec1.getString("last_name") );
+				
+				jsonthing.setId(rec1.getString("id") );
+				
+				jsonthing.setAuthorized_location_ids(rec1.getString("authorized_location_ids"));
+				
+				jsonthing.setCreated_at( rec1.getString("created_at" ));
+				
+				jsonthing.setRole_ids(rec1.getString("role_ids" ));
+				
+				jsonthing.setExternal_id(rec1.getString("external_id" ));
+				
+				jsonthing.setStatus(rec1.getString("status" ));
+				
+				jsonthing.setUpdated_at(rec1.getString("updated_at") );
+				
+				jsonthing.setEmail(rec1.getString("email" ));
+				
+				result.add(jsonthing);
+				
+				}
+				conn.disconnect();
+			    return result;		
+		      	
 			} catch (MalformedURLException e) {
 				
 				e.printStackTrace();
@@ -71,7 +92,7 @@ public class CJsonReader extends SelectorComposer<Component> {
 		
 				e.printStackTrace();
 			}
-			return "Error fetching Street Name";
+			return null;
    }
 
 }
