@@ -1,5 +1,5 @@
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
-<?link rel="stylesheet" type="text/css" href="../../resources/styles/home.style.css"?>
+<?link rel="stylesheet" type="text/css" href="/bootstrap-3.3.7-dist/css/bootstrap.css"?>
 <zk>
   <borderlayout id="homeLayout" width="100%" apply="" vflex="1">
     <north id="northContent" height="15%" border="none">
