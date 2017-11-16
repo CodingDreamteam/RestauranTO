@@ -1,8 +1,8 @@
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
 <zk>
-    <div hflex="1" vflex="1" apply="" sclass="banner" style="background-color:gray; color: white; padding: 1% 2%;">
+    <div hflex="1" vflex="1" apply="" sclass="banner" style="background-color:gray; color: white;">
         <hbox hflex="1" vflex="1" align="center">
-            <div width="700%">
+            <div width="1000%">
                <label id="labelterms" value="Terminos y Condiciones " style="float:center;margin-left:25%;cursor:hand;cursor:pointer"/>
                <label id="labelL" value="|"/>
                <label id="labelcontactus" value=" Contactanos"  style="margin-right: 25%;cursor:hand;cursor:pointer"/>
