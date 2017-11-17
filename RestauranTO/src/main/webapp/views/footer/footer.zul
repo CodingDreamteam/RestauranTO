@@ -1,12 +1,12 @@
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
 <zk>
-    <div hflex="1" vflex="1" apply="" sclass="banner" style="background-color:gray; color: white;">
-        <hbox hflex="1" vflex="1" align="center">
-            <div width="1000%">
-               <label id="labelterms" value="Terminos y Condiciones " style="float:center;margin-left:25%;cursor:hand;cursor:pointer"/>
-               <label id="labelL" value="|"/>
-               <label id="labelcontactus" value=" Contactanos"  style="margin-right: 25%;cursor:hand;cursor:pointer"/>
+    <div hflex="1" vflex="1" apply="" sclass="footer" style="background-color:#FE9A2E; color: black;">
+        <vbox hflex="1" vflex="1" align="center">
+            <div width="100%">
+               <label id="labelterms" value="Terminos y Condiciones " style="float:center;cursor:hand;cursor:pointer;font-size:100%"/>
+               <label id="labelL" value="|" style ="float:center;font-size:105%"/>
+               <label id="labelcontactus" value=" Contactanos"  style="float:center;cursor:hand;cursor:pointer;font-size:100%"/>
             </div>
-        </hbox>
+        </vbox>
     </div>
 </zk>

@@ -2,19 +2,22 @@
 <?link rel="stylesheet" type="text/css" href="/bootstrap-3.3.7-dist/css/bootstrap.css"?>
 <zk>
   <borderlayout id="homeLayout" width="100%" apply="" vflex="1">
-    <north id="northContent" height="15%" border="none">
+    <north id="northContent" height="9%" border="none">
       <include id="includeNorthContent" src="/views/header/header.zul" />
     </north>
     <center id="mainContent" border="none">
       <div>
-        <image src="/resources/LaAsuncion.jpg" width="100%" height="100%" />
-        <label id="labelIntro" value="Bienvenidos a RestauranTO sitio web donde se pueden encontrar todos los restaurantes en la capital de Nueva Esparta
-  En RestauranTO podrás buscar restaurantes cercanos a ti, leer comentarios de otros usuarios sobre los restaurantes, observar la calificación e incluso dar tu propia opinión
-  También podrás reservar para esa cita especial con tus seres queridos observando el restaurante que más satisfaga sus estándares o gustos." style="color:white;margin-left:5%;font-size:225%;position:absolute;right:5%;top:20%" />
+        <image src="/resources/LaAsuncion.jpg" width="100%" height="95%" />
+        <label id="labelWelcome" value="Bienvenidos a RestauranTO" style="Float:center;color:Black;margin-left:5%;font-size:250%;position:absolute;left:27%;Top:5%"/> 
+        <label id="labelIntro" Value="RestauranTO es un sitio web donde se pueden encontrar todos los restaurantes en la Capital de Nueva Esparta.
+ 
+ En RestauranTO podrás buscar restaurantes cercanos a ti, leer comentarios de otros usuarios sobre los restaurantes, observar la calificación e incluso dar tu propia opinión sobre los restaurantes.
+ 
+ También podrás reservar para esa cita especial con tus seres queridos, y observar el restaurante que más satisfaga sus estándares o gustos." style="font-style: italic;color:Black;margin-left:5%;font-size:160%;position:absolute;Top:15%" />
       </div>
       
     </center>
-    <south id="southContent" height="7%" border="none">
+    <south id="southContent" height="6%" border="none" hflex = "1">
       <include id="includeSouthContent" src="/views/footer/footer.zul" />
     </south>
   </borderlayout>
